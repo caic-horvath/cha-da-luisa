@@ -276,14 +276,15 @@
     }
 
     .gift-card {
-      opacity: 0;
-      transform: translateY(18px);
-      animation: fadeUp 0.7s ease forwards;
+      position: relative;
+      padding-top: 52px;
       background: var(--card);
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: var(--shadow);
-      padding: 22px;
+      padding-left: 22px;
+      padding-right: 22px;
+      padding-bottom: 22px;
       backdrop-filter: blur(10px);
       display: flex;
       flex-direction: column;
@@ -296,6 +297,7 @@
     }
 
     .gift-top {
+      margin-top: 6px;
       display: flex;
       justify-content: space-between;
       gap: 10px;
@@ -335,6 +337,32 @@
       font-size: 1.15rem;
       font-weight: bold;
       color: var(--pink-strong);
+    }
+
+    .badge-popular {
+      position: absolute;
+      top: 10px;
+      left: 12px;
+      background: #fff3cd;
+      color: #b78100;
+      font-size: 0.72rem;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-weight: bold;
+      z-index: 2;
+    }
+
+    .badge-featured {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: #ffe4ec;
+      color: #d94b7a;
+      font-size: 0.72rem;
+      padding: 5px 9px;
+      border-radius: 999px;
+      font-weight: bold;
+      z-index: 2;
     }
 
     .tag {
@@ -695,7 +723,7 @@
             <p>Os itens funcionam como sugestões simbólicas de contribuição, no estilo de chá de bebê online. Vocês podem converter os valores em PIX e usar da forma mais útil para a chegada da Luísa.</p>
           </details>
           <details>
-            <summary>Existe valor mínimo?</summary>
+            <summary>Existe valor mínimo ou máximo?</summary>
             <p>Não. A ideia é deixar opções acessíveis, médias e especiais para que cada convidado escolha com liberdade.</p>
           </details>
         </div>
@@ -712,127 +740,26 @@
 
   <script>
     const gifts = [
-      {
-        icon: '🧷',
-        title: 'Pacotinho de Amor',
-        description: 'Uma ajudinha para as primeiras fraldinhas da Luísa.',
-        price: 40,
-        category: 'Essencial',
-        bg: '#fff0f5'
-      },
-      {
-        icon: '🌈',
-        title: 'Abraço de Algodão',
-        description: 'Contribuição inspirada nas fraldas P para os primeiros meses.',
-        price: 55,
-        category: 'Essencial',
-        bg: '#fef8e7'
-      },
-      {
-        icon: '☁️',
-        title: 'Soninho Tranquilo',
-        description: 'Um presente cheio de carinho para a fase das fraldas M.',
-        price: 65,
-        category: 'Essencial',
-        bg: '#eef5ff'
-      },
-      {
-        icon: '🧸',
-        title: 'Cuidado Delicado',
-        description: 'Ajuda simbólica para lenços e itens do dia a dia.',
-        price: 35,
-        category: 'Essencial',
-        bg: '#f4efff'
-      },
-      {
-        icon: '💗',
-        title: 'Proteção de Ursinho',
-        description: 'Um mimo para pomadinhas e cuidados especiais.',
-        price: 25,
-        category: 'Essencial',
-        bg: '#fff1f6'
-      },
-      {
-        icon: '👶',
-        title: 'Lookinho da Luísa',
-        description: 'Contribuição inspirada em body fofinho para a bebê.',
-        price: 50,
-        category: 'Fofo',
-        bg: '#eef9ff'
-      },
-      {
-        icon: '🎀',
-        title: 'Primeiro Passeio',
-        description: 'Um presentinho no clima dos macacões e saídas especiais.',
-        price: 80,
-        category: 'Fofo',
-        bg: '#fff4ec'
-      },
-      {
-        icon: '🧦',
-        title: 'Pequenos Passinhos',
-        description: 'Inspirado em meias e acessórios delicados.',
-        price: 25,
-        category: 'Fofo',
-        bg: '#f4f3ff'
-      },
-      {
-        icon: '🧢',
-        title: 'Cabecinha Quentinha',
-        description: 'Um carinho para touquinhas e peças aconchegantes.',
-        price: 30,
-        category: 'Fofo',
-        bg: '#fff9ea'
-      },
-      {
-        icon: '🛁',
-        title: 'Banho Encantado',
-        description: 'Contribuição especial para a hora do banho da Luísa.',
-        price: 120,
-        category: 'Especial',
-        bg: '#eef9f7'
-      },
-      {
-        icon: '🌙',
-        title: 'Ninho de Amor',
-        description: 'Um presente maior, inspirado no aconchego da amamentação.',
-        price: 150,
-        category: 'Especial',
-        bg: '#f7f2ff'
-      },
-      {
-        icon: '✨',
-        title: 'Sonhos Doces',
-        description: 'Ajuda simbólica para itens do cantinho da bebê.',
-        price: 180,
-        category: 'Especial',
-        bg: '#fff2f7'
-      },
-      {
-        icon: '💖',
-        title: 'Um Carinho para a Luísa',
-        description: 'Contribuição livre, cheia de afeto.',
-        price: 30,
-        category: 'Livre',
-        bg: '#fff1f5'
-      },
-      {
-        icon: '🌟',
-        title: 'Mimos com Amor',
-        description: 'Para quem quer participar com um valor delicado e simbólico.',
-        price: 50,
-        category: 'Livre',
-        bg: '#fff9e9'
-      },
-      {
-        icon: '🎁',
-        title: 'Presente dos Sonhos',
-        description: 'Uma contribuição especial para apoiar esse novo começo.',
-        price: 100,
-        category: 'Livre',
-        bg: '#eef5ff'
-      }
-    ];
+  { icon: '🧷', title: 'Pacotinho de Amor', description: 'Para as primeiras fraldinhas da Luísa.', price: 70, category: 'Essencial', bg: '#fff0f5', popular: true },
+  { icon: '🌈', title: 'Abraço de Algodão', description: 'Ajuda para fraldas do dia a dia.', price: 95, category: 'Essencial', bg: '#fef8e7' },
+  { icon: '☁️', title: 'Soninho Tranquilo', description: 'Para noites mais confortáveis.', price: 120, category: 'Essencial', bg: '#eef5ff', popular: true },
+  { icon: '🧸', title: 'Cuidado Delicado', description: 'Itens de higiene e cuidado.', price: 80, category: 'Essencial', bg: '#f4efff' },
+  { icon: '💗', title: 'Proteção de Ursinho', description: 'Para cuidados especiais da pele.', price: 60, category: 'Essencial', bg: '#fff1f6' },
+
+  { icon: '👶', title: 'Lookinho da Luísa', description: 'Roupinhas e looks fofos.', price: 110, category: 'Fofo', bg: '#eef9ff' },
+  { icon: '🎀', title: 'Primeiro Passeio', description: 'Para saídas especiais da bebê.', price: 180, category: 'Fofo', bg: '#fff4ec', popular: true },
+  { icon: '🧦', title: 'Pequenos Passinhos', description: 'Acessórios delicados.', price: 65, category: 'Fofo', bg: '#f4f3ff' },
+  { icon: '🧢', title: 'Cabecinha Quentinha', description: 'Para dias mais fresquinhos.', price: 75, category: 'Fofo', bg: '#fff9ea' },
+
+  { icon: '🛁', title: 'Banho Encantado', description: 'Hora do banho com carinho.', price: 220, category: 'Especial', bg: '#eef9f7', featured: true },
+  { icon: '🌙', title: 'Ninho de Amor', description: 'Conforto para mamãe e bebê.', price: 280, category: 'Especial', bg: '#f7f2ff', featured: true },
+  { icon: '✨', title: 'Sonhos Doces', description: 'Para o cantinho da Luísa.', price: 320, category: 'Especial', bg: '#fff2f7', featured: true },
+
+  { icon: '💖', title: 'Um Carinho Especial', description: 'Contribuição livre com amor.', price: 80, category: 'Livre', bg: '#fff1f5' },
+  { icon: '🌟', title: 'Mimos com Amor', description: 'Para ajudar nesse momento único.', price: 120, category: 'Livre', bg: '#fff9e9' },
+  { icon: '🎁', title: 'Presente dos Sonhos', description: 'Uma contribuição especial.', price: 200, category: 'Livre', bg: '#eef5ff' },
+  { icon: '🌈', title: 'Chuva de Amor', description: 'Para quem quiser presentear com mais generosidade.', price: 350, category: 'Premium', bg: '#fdf1ff', featured: true }
+];
 
     const giftGrid = document.getElementById('giftGrid');
 
@@ -841,6 +768,8 @@
       card.className = 'gift-card';
       card.style.animationDelay = `${index * 0.08}s`; 
       card.innerHTML = `
+        ${gift.popular ? '<div class="badge-popular">⭐ Mais escolhido</div>' : ''}
+        ${gift.featured ? '<div class="badge-featured">💎 Especial</div>' : ''}
         <div class="gift-top">
           <div>
             <h3 class="gift-title">${gift.title}</h3>
